@@ -4,13 +4,38 @@
   
   
   <entry>
-    <title>剑指offer刷题1</title>
+    <title>剑指offer记录2</title>
+    <link href="/2022/04/24/%E5%89%91%E6%8C%87offer2/"/>
+    <url>/2022/04/24/%E5%89%91%E6%8C%87offer2/</url>
+    
+    <content type="html"><![CDATA[<h3 id="二叉搜索树的第k个结点"><a href="#二叉搜索树的第k个结点" class="headerlink" title="二叉搜索树的第k个结点"></a>二叉搜索树的第k个结点</h3><p>得注意的是树在处理节点时，仅仅退出此节点可能还会<strong>让后面的节点继续执行</strong>，想要一次退出就整体退出需要<strong>加上额外的判断条件</strong></p><h3 id="数组中只出现一次的两个数字"><a href="#数组中只出现一次的两个数字" class="headerlink" title="数组中只出现一次的两个数字"></a>数组中只出现一次的两个数字</h3><p>注意的是0和任何数异或都不变</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>刷题</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>剑指offer记录1</title>
     <link href="/2022/04/23/%E5%89%91%E6%8C%87offer1/"/>
     <url>/2022/04/23/%E5%89%91%E6%8C%87offer1/</url>
     
     <content type="html"><![CDATA[<h3 id="数组中出现次数超过一半的数字"><a href="#数组中出现次数超过一半的数字" class="headerlink" title="数组中出现次数超过一半的数字"></a>数组中出现次数超过一半的数字</h3><p>描述：数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。假设数组非空，并且一定存在满足条件的数字。</p><figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">moreThanHalfNum_Solution</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-type">int</span> val, cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">// 使用了抵消的思想</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> e : nums) <br>        &#123;<br>            <span class="hljs-keyword">if</span> (cnt == <span class="hljs-number">0</span>)<br>            &#123;<br>                val = e;<br>                cnt ++;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <br>            &#123;<br>                <span class="hljs-keyword">if</span> (e != val)   cnt--;<br>                <span class="hljs-keyword">else</span>    cnt++;<br>            &#125;<br>        &#125;<br>        <br>        <span class="hljs-keyword">return</span> val;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><h3 id="字符流中第一个只出现一次的字符（单调队列）"><a href="#字符流中第一个只出现一次的字符（单调队列）" class="headerlink" title="字符流中第一个只出现一次的字符（单调队列）"></a>字符流中第一个只出现一次的字符（单调队列）</h3><p>请实现一个函数用来找出字符流中第一个只出现一次的字符。</p><p>例如，当从字符流中只读出前两个字符 <code>go</code> 时，第一个只出现一次的字符是 <code>g</code>。</p><p>当从该字符流中读出前六个字符 <code>google</code> 时，第一个只出现一次的字符是 <code>l</code>。</p><p>如果当前字符流没有存在出现一次的字符，返回 <code>#</code> 字符。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span><br><span class="hljs-comment">// 使用哈希表和单调队列</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    unordered_map&lt;<span class="hljs-type">char</span>, <span class="hljs-type">int</span>&gt; count;<br>    queue&lt;<span class="hljs-type">char</span>&gt; q;<br>    <br>    <span class="hljs-comment">//Insert one char from stringstream</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">char</span> ch)</span></span>&#123;<br>        count[ch]++;<br>        <span class="hljs-keyword">if</span> (!q.<span class="hljs-built_in">empty</span>() &amp;&amp; q.<span class="hljs-built_in">front</span>() == ch) &#123;<br>            <span class="hljs-keyword">while</span> (!q.<span class="hljs-built_in">empty</span>() &amp;&amp; count[q.<span class="hljs-built_in">front</span>()] &gt; <span class="hljs-number">1</span>)  <br>                q.<span class="hljs-built_in">pop</span>();<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (count[ch] == <span class="hljs-number">1</span>)<br>            q.<span class="hljs-built_in">push</span>(ch);<br>    &#125;<br>    <span class="hljs-comment">//return the first appearence once char in current stringstream</span><br>    <span class="hljs-function"><span class="hljs-type">char</span> <span class="hljs-title">firstAppearingOnce</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">if</span> (q.<span class="hljs-built_in">empty</span>())  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;#&#x27;</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> q.<span class="hljs-built_in">front</span>();<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>刷题</tag>
+      
+    </tags>
     
   </entry>
   
@@ -40,7 +65,7 @@
     <link href="/2022/04/23/VIM%E5%AD%A6%E4%B9%A0/"/>
     <url>/2022/04/23/VIM%E5%AD%A6%E4%B9%A0/</url>
     
-    <content type="html"><![CDATA[<p>VIM快捷键</p><hr><p>删除单词</p><ul><li>dw 删除当前单词至后一个单词的<strong>开头</strong></li><li>de 删除当前单词至<strong>末尾</strong></li><li>daw 删除光标所在的单词至后一个单词的开头</li><li>D 删除至光标至<strong>本行末尾</strong>的</li><li>d0 删除至本行<strong>开头</strong></li><li>dd删除一行</li></ul><p>撤销</p><ul><li>u</li><li>ctrl + r反撤销</li></ul><p>函数跳转</p><figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 使用了ctags插件，在整个项目的代码目录下ctags -R，然后可以使用ctrl + ]进行跳转,ctrl + t进行反跳转</span><br><br><span class="hljs-comment">// 跳转到系统函数是使用2 + shift + k</span><br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>VIM快捷键</p><hr><p>删除单词</p><ul><li>dw 删除当前单词至后一个单词的<strong>开头</strong></li><li>de 删除当前单词至<strong>末尾</strong></li><li>daw 删除光标所在的单词至后一个单词的开头</li><li>D 删除至光标至<strong>本行末尾</strong>的</li><li>d0 删除至本行<strong>开头</strong></li><li>dd删除一行</li></ul><p>撤销</p><ul><li>u</li><li>ctrl + r反撤销</li></ul><p>函数跳转</p><figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 使用了ctags插件，在整个项目的代码目录下ctags -R，然后可以使用ctrl + ]进行跳转,ctrl + t进行反跳转</span><br><br><span class="hljs-comment">// 跳转到系统函数是使用2 + shift + k</span><br></code></pre></td></tr></table></figure><p>移动光标</p><p><a href="https://harttle.land/2015/11/07/vim-cursor.html">Vim 中如何快速移动光标？ | Harttle Land</a></p><ul><li>$是移动到行末尾</li><li>0是移动到行首</li><li>shift + ]是移动到下一个函数</li><li>shift + [是移动到上一个函数</li><li>ctrl + d是前进半页，+ u是后退半页</li><li>w是移动到下一个单词的词首</li><li>b是上一个单词的词首</li><li>e是下一个单词的结尾</li><li></li></ul><p>剪切、删除并插入</p><p><a href="https://segmentfault.com/a/1190000038677023">Vim 进阶 - 剪切（删除）、复制、粘贴与寄存器 - SegmentFault 思否</a></p><p>插入</p><ul><li>在光标前 i， 行前I</li><li>光标后 a， 行后A</li><li>光标的上一行插入O，下一行插入o</li></ul><p>显示当前编辑文件名</p><ul><li>ctrl + g</li></ul><p>bash下：</p><ul><li>alt + d是删除右边</li><li>ctrl + w是删除左边</li></ul>]]></content>
     
     
     
