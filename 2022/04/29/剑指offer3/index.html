@@ -16,21 +16,21 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="测试文章">
-<meta property="og:url" content="http://example.com/2022/04/23/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/index.html">
+    <meta name="description" content="和为S的连续正数序列将n²的复杂度降下来可以使用双指针进行优化 123456789101112131415161718192021222324class Solution &amp;#123;public:    &#x2F;&#x2F; 一般n²的方法将复杂度可以往双指针考虑    vector&lt;vector&lt;int&gt; &gt; findContinuousSequence(int sum) &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="剑指offer3">
+<meta property="og:url" content="http://example.com/2022/04/29/%E5%89%91%E6%8C%87offer3/index.html">
 <meta property="og:site_name" content="大咸鱼">
+<meta property="og:description" content="和为S的连续正数序列将n²的复杂度降下来可以使用双指针进行优化 123456789101112131415161718192021222324class Solution &amp;#123;public:    &#x2F;&#x2F; 一般n²的方法将复杂度可以往双指针考虑    vector&lt;vector&lt;int&gt; &gt; findContinuousSequence(int sum) &amp;#123;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2022/04/23/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/test.png">
-<meta property="article:published_time" content="2022-04-23T07:19:26.000Z">
-<meta property="article:modified_time" content="2022-04-23T07:25:03.221Z">
+<meta property="article:published_time" content="2022-04-29T04:17:26.000Z">
+<meta property="article:modified_time" content="2022-04-29T04:22:09.300Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="demo">
+<meta property="article:tag" content="刷题">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/04/23/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/test.png">
   
   
-  <title>测试文章 - 大咸鱼</title>
+  <title>剑指offer3 - 大咸鱼</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -176,9 +176,9 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="测试文章">
+            <span class="h2" id="subtitle" title="剑指offer3">
               
-                测试文章
+                剑指offer3
               
             </span>
 
@@ -188,8 +188,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-04-23 15:19" pubdate>
-        2022年4月23日 下午
+      <time datetime="2022-04-29 12:17" pubdate>
+        2022年4月29日 中午
       </time>
     </span>
   
@@ -199,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      478 字
     </span>
   
 
@@ -208,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      4 分钟
     </span>
   
 
@@ -245,18 +245,13 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">测试文章</h1>
+            <h1 style="display: none">剑指offer3</h1>
             
             <div class="markdown-body">
-              <img src="/2022/04/23/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/test.png" srcset="/img/loading.gif" lazyload class="" title="[图片引用方法一]">
+              <h3 id="和为S的连续正数序列"><a href="#和为S的连续正数序列" class="headerlink" title="和为S的连续正数序列"></a>和为S的连续正数序列</h3><p>将n²的复杂度降下来可以使用双指针进行优化</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">// 一般n²的方法将复杂度可以往双指针考虑</span><br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt; &gt; <span class="hljs-built_in">findContinuousSequence</span>(<span class="hljs-type">int</span> sum) &#123;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; res;<br>        <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>, j = <span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">for</span> (; j &lt;= sum &amp;&amp; i &lt; j; ) &#123;<br>            <span class="hljs-type">int</span> ans = (i + j) * (j - i + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;<br>            <span class="hljs-keyword">if</span> (ans == sum) &#123;<br>               vector&lt;<span class="hljs-type">int</span>&gt; tmp;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = i; k &lt;= j; k++) &#123;<br>                    tmp.<span class="hljs-built_in">push_back</span>(k);<br>                &#125;<br>                res.<span class="hljs-built_in">push_back</span>(tmp);<br>                i++, j++;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ans &lt; sum)<br>                j++;<br>            <span class="hljs-keyword">else</span><br>                i++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
-
-
-
-
-
-
-
+<h3 id="骰子点数"><a href="#骰子点数" class="headerlink" title="骰子点数"></a>骰子点数</h3>
             </div>
             <hr>
             <div>
@@ -266,7 +261,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/demo/">demo</a>
+                      <a class="hover-with-bg" href="/tags/%E5%88%B7%E9%A2%98/">刷题</a>
                     
                   </div>
                 
@@ -283,18 +278,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/04/23/%E5%89%91%E6%8C%87offer1/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">剑指offer记录1</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/04/23/VIM%E5%AD%A6%E4%B9%A0/">
-                        <span class="hidden-mobile">VIM的使用</span>
+                      <a href="/2022/04/26/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%B0%8F%E8%AE%B01/">
+                        <span class="hidden-mobile">内存管理小记1</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
